@@ -1,0 +1,9 @@
+round trip! BEGIN;
+round trip! SET LOCAL statement_timeout = 1500
+round trip! SELECT pg_sleep(2)
+round trip! ROLLBACK;
+it's timing out
+round trip! SET LOCAL statement_timeout = 1500; SELECT pg_sleep(2)
+it's not timing out
+round trip! SET LOCAL statement_timeout = 1500; BEGIN; SELECT pg_sleep(2)
+it's timing out
